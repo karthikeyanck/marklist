@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student mark List</title>
+  <style>
+    #outer {
+      display: none;
+      border: 3px solid black;
+      padding: 30px;
+      border-radius: 20px;
+      width: 300px;
+      align-items: center;
+      text-align: center;
+      font-size: medium;
+    }
+    body{
+       background: radial-gradient(circle, cyan,greenyellow);
+    }
+     h1{
+    border: 4px solid black;
+    padding: 30px;
+    border-radius: 20px;
+    background-color:greenyellow;
+ }  
+    .contain{
+      border: 5px solid black;
+      padding: 20px;
+      width: 350px;
+      color: black;
+      border-radius: 20px;
+      background-color:gainsboro;
+      text-align: left;
+      text-decoration-color: black;
+    }
+    @media  screen and (max-width:600px) {
+    h1{
+        padding: 15px; ;
+        align-items: center;
+    }
+    .contain{
+      align-items: center;
+      font-size: larger;
+    }
+    #outer{
+      align-items: center;
+    }
+    }
+  </style>
+</head>
+<body style="margin: 30px5;">
+   <center><h1 style="color: black;"><b>Student Mark List</b></h1> <br><br>
+  <div class="contain">
+  <label for="text">Name </label><input type="text" id="input"><br><br>
+  <label for="Roll no">Roll no </label><input type="number" id="input2"><br><br>
+  <label for="Tamil">Tamil </label><input type="number" placeholder="enter mark" style="width: 90px;" id="num1"><br><br>
+  <label for="English">English </label><input type="number" placeholder="enter mark"style="width: 90px;" id="num2"><br><br>
+  <label for="Maths">Maths </label><input type="number" placeholder="enter mark"style="width: 90px;" id="num3"><br><br>
+  <label for="science">science </label><input type="number" placeholder="enter mark"style="width: 90px;" id="num4"><br><br>
+  <label for="sociel science">sociel science </label><input type="number" placeholder="enter mark"style="width: 90px;" id="num5"><br>
+  <br>
+  <center><button onclick="calculate()">sumit </button></center>
+  </div></center><br><br>
+  <center>
+  <div id="outer">
+    <h2 style="color: rgb(10, 11, 34);"><b><i>Result</i></b></h2>
+    <h3>Name: <span id="name"> </span></h3>
+    <h3>Roll No:  <span id="roll"> </span></h3>
+    <h3>Total: <span id="total">/500</span></h3>
+    <h3>Average: <span id="average">0 </span></h3>
+    <h3>Result: <span id="result"></span></h3><br>
+  </div></center>
+  <script>
+    function calculate() {
+      const name = (document.getElementById('input').value)
+      var roll = (document.getElementById('input2').value)
+      var n1 = parseFloat(document.getElementById('num1').value);
+      var n2 = parseFloat(document.getElementById('num2').value);
+      var n3 = parseFloat(document.getElementById('num3').value);
+      var n4 = parseFloat(document.getElementById('num4').value);
+      var n5 = parseFloat(document.getElementById('num5').value);
+      
+       if (name === '' || roll === '') {
+      alert("Please enter both Name and Roll Number.");
+      return;
+    }
+
+    if (n1 === '' || n2 === '' || n3 === '' || n4 === '' || n5 === '') {
+      alert("Please enter marks for all subjects.");
+      return;
+    }
+
+    const num1 = parseFloat(n1);
+    const num2 = parseFloat(n2);
+    const num3 = parseFloat(n3);
+    const num4 = parseFloat(n4);
+    const num5 = parseFloat(n5);
+
+      var total = n1 + n2 + n3 + n4 + n5;
+      var average = total / 5;
+
+    let result = 'pass';
+    if (num1 < 35 || num2 < 35 || num3 < 35 || num4 < 35 || num5 < 35) {
+      result = 'fail';
+    }
+
+      document.getElementById('outer').style.display = 'block';
+      document.getElementById('total').innerText = total;
+      document.getElementById('average').innerText = average;
+      document.getElementById('name').innerText = name;
+      document.getElementById('roll').innerText = roll;
+    const resultElement = document.getElementById('result');
+    resultElement.innerText = result;
+    resultElement.style.color = (result === 'pass') ? 'green' : 'red';
+    }
+  </script>
+</body>
+</html>
